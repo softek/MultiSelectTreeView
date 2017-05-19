@@ -1,0 +1,12 @@
+; http://editorconfig.org/
+
+; Top-most EditorConfig file
+root = true
+
+[*]
+indent_style = tab
+end_of_line = crlf
+trim_trailing_whitespace = true
+
+[*.cs]
+csharp_space_after_cast = true
