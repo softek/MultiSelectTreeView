@@ -1,4 +1,4 @@
-﻿namespace System.Windows.Controls
+﻿namespace MultiSelectTreeView.Controls
 {
 	public class SelectionSingle
 	{

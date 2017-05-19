@@ -1,7 +1,8 @@
 ﻿using System.Threading;
+using System.Windows;
 using System.Windows.Threading;
 
-namespace System.Windows.Controls
+namespace MultiSelectTreeView.Controls
 {
 	/// <summary>
 	/// Helper methods to focus.

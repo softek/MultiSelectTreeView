@@ -1,8 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 
-namespace System.Windows.Controls
+namespace MultiSelectTreeView.Controls
 {
 	internal class BorderSelectionLogic : IDisposable
 	{

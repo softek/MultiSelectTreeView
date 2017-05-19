@@ -1,14 +1,16 @@
-﻿namespace System.Windows.Controls
+﻿using System;
+
+namespace MultiSelectTreeView.Controls
 {
-    internal interface ISelectionStrategy : IDisposable
-    {
+	internal interface ISelectionStrategy : IDisposable
+	{
 		event EventHandler<PreviewSelectionChangedEventArgs> PreviewSelectionChanged;
-		
+
 		void ApplyTemplate();
-        bool SelectCore(MultiSelectTreeViewItem owner);
-        bool Deselect(MultiSelectTreeViewItem item, bool bringIntoView = false);
-        bool SelectPreviousFromKey();
-        bool SelectNextFromKey();
+		bool SelectCore(MultiSelectTreeViewItem owner);
+		bool Deselect(MultiSelectTreeViewItem item, bool bringIntoView = false);
+		bool SelectPreviousFromKey();
+		bool SelectNextFromKey();
 		bool SelectFirstFromKey();
 		bool SelectLastFromKey();
 		bool SelectPageUpFromKey();
@@ -16,8 +18,8 @@
 		bool SelectAllFromKey();
 		bool SelectParentFromKey();
 		bool SelectCurrentBySpace();
-        bool Select(MultiSelectTreeViewItem treeViewItem);
-    }
+		bool Select(MultiSelectTreeViewItem treeViewItem);
+	}
 
 	public class PreviewSelectionChangedEventArgs : EventArgs
 	{

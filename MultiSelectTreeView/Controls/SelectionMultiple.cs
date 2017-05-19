@@ -1,10 +1,13 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 
-namespace System.Windows.Controls
+namespace MultiSelectTreeView.Controls
 {
 	/// <summary>
 	/// Implements the logic for the multiple selection strategy.
@@ -25,7 +28,7 @@ namespace System.Windows.Controls
 		#region Properties
 
 		public bool LastCancelAll { get; private set; }
-		
+
 		internal static bool IsControlKeyDown
 		{
 			get
@@ -206,7 +209,7 @@ namespace System.Windows.Controls
 						}
 					}
 				}
-				
+
 				var e = new PreviewSelectionChangedEventArgs(true, item.DataContext);
 				OnPreviewSelectionChanged(e);
 				if (e.CancelAny)

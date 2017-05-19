@@ -1,21 +1,25 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
+using System.Windows;
 using System.Windows.Automation.Peers;
+using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using MultiSelectTreeView.Automation.Peers;
 
-namespace System.Windows.Controls
+namespace MultiSelectTreeView.Controls
 {
 	public class MultiSelectTreeView : ItemsControl
 	{
 		#region Constants and Fields
 
 		public event EventHandler<PreviewSelectionChangedEventArgs> PreviewSelectionChanged;
-		
+
 		// TODO: Provide more details. Fire once for every single change and once for all groups of changes, with different flags
 		public event EventHandler SelectionChanged;
 
@@ -385,7 +389,7 @@ namespace System.Windows.Controls
 				OnPreviewSelectionChanged(e);
 				if (e.CancelAny) return false;
 			}
-			
+
 			SelectedItems.Clear();
 			return true;
 		}
@@ -499,7 +503,7 @@ namespace System.Windows.Controls
 					SelectedItems.Clear();
 					break;
 			}
-			
+
 			base.OnItemsChanged(e);
 		}
 

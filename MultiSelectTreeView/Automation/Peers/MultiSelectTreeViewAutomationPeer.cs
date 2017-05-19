@@ -1,13 +1,13 @@
-﻿using System.Windows.Automation.Provider;
-using System.Windows.Controls;
+﻿using System.Windows.Automation.Peers;
+using System.Windows.Automation.Provider;
 
-namespace System.Windows.Automation.Peers
+namespace MultiSelectTreeView.Automation.Peers
 {
 	public class MultiSelectTreeViewAutomationPeer : ItemsControlAutomationPeer, ISelectionProvider
 	{
 		#region Constructor
 
-		public MultiSelectTreeViewAutomationPeer(MultiSelectTreeView owner)
+		public MultiSelectTreeViewAutomationPeer(Controls.MultiSelectTreeView owner)
 			: base(owner)
 		{
 		}

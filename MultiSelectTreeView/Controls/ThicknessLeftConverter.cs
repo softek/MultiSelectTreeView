@@ -1,10 +1,13 @@
-﻿using System.Windows.Data;
+﻿using System;
+using System.Globalization;
+using System.Windows;
+using System.Windows.Data;
 
-namespace System.Windows.Controls
+namespace MultiSelectTreeView.Controls
 {
 	class ThicknessLeftConverter : IValueConverter
 	{
-		public object Convert(object value, Type targetType, object parameter, Globalization.CultureInfo culture)
+		public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
 		{
 			if (value is int)
 				return new Thickness { Left = (int) value };
@@ -13,7 +16,7 @@ namespace System.Windows.Controls
 			return new Thickness();
 		}
 
-		public object ConvertBack(object value, Type targetType, object parameter, Globalization.CultureInfo culture)
+		public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
 		{
 			throw new NotImplementedException();
 		}

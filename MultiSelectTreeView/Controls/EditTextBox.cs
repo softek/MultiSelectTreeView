@@ -1,7 +1,9 @@
-﻿using System.Windows.Data;
+﻿using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
 using System.Windows.Input;
 
-namespace System.Windows.Controls
+namespace MultiSelectTreeView.Controls
 {
 	/// <summary>
 	/// Text box which focuses itself on load and selects all text in it.

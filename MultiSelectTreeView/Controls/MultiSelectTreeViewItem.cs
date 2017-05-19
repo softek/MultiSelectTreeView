@@ -1,11 +1,14 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
+using System.Windows;
 using System.Windows.Automation.Peers;
+using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 
-namespace System.Windows.Controls
+namespace MultiSelectTreeView.Controls
 {
 	public class MultiSelectTreeViewItem : HeaderedItemsControl
 	{
@@ -98,8 +101,8 @@ namespace System.Windows.Controls
 
 		private static void OnIsExpandedChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
 		{
-			var item = (MultiSelectTreeViewItem)d;
-			var isExpanded = (bool)e.NewValue;
+			var item = (MultiSelectTreeViewItem) d;
+			var isExpanded = (bool) e.NewValue;
 
 			if (isExpanded)
 			{
