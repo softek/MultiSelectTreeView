@@ -87,13 +87,30 @@ namespace System.Windows.Controls
 			"IsExpanded",
 			typeof(bool),
 			typeof(MultiSelectTreeViewItem),
-			new FrameworkPropertyMetadata(false));
+			new FrameworkPropertyMetadata(false,
+				new PropertyChangedCallback(OnIsExpandedChanged)));
 
 		public static DependencyProperty IsEditableProperty = DependencyProperty.Register(
 			"IsEditable",
 			typeof(bool),
 			typeof(MultiSelectTreeViewItem),
 			new FrameworkPropertyMetadata(true));
+
+		private static void OnIsExpandedChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+		{
+			var item = (MultiSelectTreeViewItem)d;
+			var isExpanded = (bool)e.NewValue;
+
+			if (isExpanded)
+			{
+				item.OnExpanded(new RoutedEventArgs(ExpandedEvent, item));
+			}
+		}
+
+		private void OnExpanded(RoutedEventArgs routedEventArgs)
+		{
+			RaiseEvent(routedEventArgs);
+		}
 
 		public static new DependencyProperty IsVisibleProperty = DependencyProperty.Register(
 			"IsVisible",
@@ -169,6 +186,21 @@ namespace System.Windows.Controls
 		}
 
 		#endregion
+
+		public static readonly RoutedEvent ExpandedEvent = EventManager.RegisterRoutedEvent(nameof(Expanded), RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(MultiSelectTreeViewItem));
+
+		public event RoutedEventHandler Expanded
+		{
+			add
+			{
+				AddHandler(ExpandedEvent, value);
+			}
+			remove
+			{
+				RemoveHandler(ExpandedEvent, value);
+			}
+		}
+
 
 		#region Public Properties
 
