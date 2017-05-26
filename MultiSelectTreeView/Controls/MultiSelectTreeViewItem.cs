@@ -12,6 +12,8 @@ namespace MultiSelectTreeView.Controls
 {
 	public class MultiSelectTreeViewItem : HeaderedItemsControl
 	{
+		private bool _reassigningItemSourceFromNull;
+
 		#region Dependency properties
 
 		#region Brushes
@@ -504,7 +506,13 @@ namespace MultiSelectTreeView.Controls
 				}
 			}
 
+			if (e.Property.Name == nameof(ItemsSource))
+			{
+				_reassigningItemSourceFromNull = (e.OldValue == null);
+			}
+
 			base.OnPropertyChanged(e);
+			_reassigningItemSourceFromNull = false;
 		}
 
 		protected override DependencyObject GetContainerForItemOverride()
@@ -731,7 +739,9 @@ namespace MultiSelectTreeView.Controls
 					parentTV = ParentTreeView;
 					if (parentTV == null)
 						parentTV = lastParentTreeView;
-					if (parentTV != null)
+					// If the reset is the result of reassigning ItemsSource, and the prior value
+					// was null, we can skip checking for removals from the selected items
+					if (parentTV != null && !_reassigningItemSourceFromNull)
 					{
 						var selection = new object[parentTV.SelectedItems.Count];
 						parentTV.SelectedItems.CopyTo(selection, 0);
