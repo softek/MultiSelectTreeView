@@ -283,20 +283,6 @@
 							<Setter Property="Control.Background" Value="{StaticResource SelectedHoveredBackgroundBrush}"/>
 						</MultiTrigger>
 
-						<!-- Make all selected items grey when the entire Window is inactive -->
-						<MultiDataTrigger>
-							<MultiDataTrigger.Conditions>
-								<Condition
-									Binding="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}, Path=IsActive, FallbackValue=True}"
-									Value="False"/>
-								<Condition
-									Binding="{Binding RelativeSource={RelativeSource Mode=Self}, Path=IsSelected}"
-									Value="True"/>
-							</MultiDataTrigger.Conditions>
-							<Setter Property="Border.BorderBrush" Value="{StaticResource InactiveBorderBrush}"/>
-							<Setter Property="Control.Background" Value="{StaticResource InactiveBackgroundBrush}"/>
-						</MultiDataTrigger>
-						
 						<!-- Make all selected items grey when none of this TreeView's items is focused (i.e. the TreeView is not focused) -->
 						<MultiDataTrigger>
 							<MultiDataTrigger.Conditions>
